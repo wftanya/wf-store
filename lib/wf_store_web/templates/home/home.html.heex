@@ -1,0 +1,16 @@
+<div class="navbar">
+  <div class="home--banner-wrapper">
+    <!-- TODO: responsive CSS banner -->
+    <img class="home--banner-image" src="images/storebanner.png" alt="Inconvenience Store" />
+  </div>
+  <.cart_button action="open_cart" count={@cart_count} />
+</div>
+<div class="home--product-cards-container">
+  <%= for product <- @products do %>
+    <.product_card added?={@added == "#{product.id}"} product={product} action="add_to_cart" />
+  <% end %>
+</div>
+
+<%= if @modal do %>
+  <.modal /> <!-- TODO: need a better modal than this, with overlay and x button -->
+<% end %>
